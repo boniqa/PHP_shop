@@ -95,13 +95,36 @@ class User {
         if ($user_id != -1) {
             $sql = "DELETE FROM User WHERE id=$user_id";
             $result = $connection->query($sql);
-            
+
             if ($result == true) {
                 return True;
             }
             return False;
         }
         return True;
+    }
+
+    public function returnAllUsers(mysqli $connection) {
+        $sql = "SELECT * FROM Users ORDER BY id DESC";
+
+        $return = [];
+
+        $result = $connection->query($sql);
+
+        if ($result == true && $result->num_rows != 0) {
+            foreach ($result as $row) {
+                $user = new User();
+                $user->id = $row['id'];
+                $user->name = $row['name'];
+                $user->surname = $row['surname'];
+                $user->mail = $row['mail'];
+                $user->password = $row['password'];
+                $user->address = $row['address'];
+
+                $return[] = $user;
+            }
+        }
+        return $return;
     }
 
 }
