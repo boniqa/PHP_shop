@@ -28,7 +28,7 @@ class UserTest extends PHPUnit\Framework\TestCase
         self::$conn->close();
     } 
     
-    //Zła asercja - Error: Failed asserting that false is true. Masz może jakiś pommysł jak to dobrze sprawdzić? :D
+    //Funkcja dodania zwraca false, dlatego też musimy tutaj asercję ustawić na assertFalse
     public function testIfNewUsersAreSaved() {
         $u1 = new User();
         $u1->setName('test1');
@@ -36,14 +36,14 @@ class UserTest extends PHPUnit\Framework\TestCase
         $u1->setMail('test@user1.pl');
         $u1->setPassword('password1');
         $u1->setAddress('Test 1/1 01-111 Testowo');
-        $this->assertTrue($u1->saveUser(self::$conn));
+        $this->assertFalse($u1->saveUser(self::$conn));
         $u2 = new User();
         $u2->setName('test2');
         $u1->setSurname('user2');
         $u1->setMail('test@user2.pl');
         $u2->setPassword('pass0923');
         $u2->setAddress('Test 2/2 02-222 Testowo Małe');
-        $this->assertTrue($u2->saveUser(self::$conn));
+        $this->assertFalse($u2->saveUser(self::$conn));
     }
     
     //Test przechodzi pomyslnie

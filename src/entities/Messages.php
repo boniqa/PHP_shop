@@ -46,7 +46,7 @@ class Messages {
         if ($this->id == -1) {
 
             $sql = "INSERT INTO Messages(user_id, text, order_id)
-          VALUES('{$this->user_id}', '{$this->text}', '{$this->order_id}');";
+          VALUES('{$this->user_id}', '{$this->message}', '{$this->order_id}');";
 
             $result = $connection->query($sql);
 

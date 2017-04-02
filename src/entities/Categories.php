@@ -60,4 +60,23 @@ class Categories {
         }
         return True;
     }
+    
+    public function returnAllCategories(mysqli $connection) {
+        $sql = "SELECT * FROM Categories ORDER BY id DESC";
+
+        $return = [];
+
+        $result = $connection->query($sql);
+
+        if ($result == true && $result->num_rows != 0) {
+            foreach ($result as $row) {
+                $category = new Categories();
+                $category->id = $row['id'];
+                $category->name = $row['name'];
+
+                $return[] = $category;
+            }
+        }
+        return $return;
+    }
 }
