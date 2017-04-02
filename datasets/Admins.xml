@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Admins 
+        id="1" 
+        login="admin" 
+        password="$2y$10$1I9hnGxFAopQqDs2H/69dehShcj/AL9/q6hJzAvwyBYpRMQOJZr5a" />
+    <!-- password1 -->   
+</dataset>
