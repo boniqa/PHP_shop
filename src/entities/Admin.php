@@ -33,4 +33,30 @@ class Admin {
         $this->password = $hashedPassword;
     }
     
+    public function saveNewAdmin(mysqli $connection) {
+        if ($this->id == -1) {
+
+            $sql = "INSERT INTO Admin(login, password)
+            VALUES('{$this->login}', '{$this->password}')";
+
+            $result = $connection->query($sql);
+
+            if ($result === TRUE) {
+                $this->id = $connection->insert_id;
+                return True;
+            } else {
+                return False;
+            }
+        } else {
+            $sql = "UPDATE Admin SET login='{$this->login}',
+            password='{$this->password}' WHERE id={$this->id}";
+
+            $result = $connection->query($sql);
+            if ($result == true) {
+                return True;
+            }
+        }
+        return False;
+    }
+    
 }

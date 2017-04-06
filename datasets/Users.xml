@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Users 
+        id="1"
+        name="test1"
+        surname="user1"
+        mail="test@user1.pl"
+        password="$2y$10$2PFlNqdwSQ1ss9mdMCjoUugkAcOGntWe7FtCIUxUTXizlTdvzeNsi"
+        address="Test 1/1 01-111 Testowo" />
+    <!-- password1 -->   
+        
+    <Users 
+        id="2"
+        name="test2"
+        surname="user2"
+        mail="test@user2.pl"
+        password="$2y$10$i2Fx307h7fpr1Amf74tzw.nfuYqgRg4jyXN4eOKg8FGrqjBKKzMaa"
+        address="Test 2/2 02-222 Testowo Małe" />
+    <!-- pass0923 -->    
+</dataset>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Users 
+        id="1" 
+        email="lukasz@email.com" 
+        password="$2y$10$eRiol/YytHKUs68LyfevYenHFGm52lb58eGqFolr/HvQ9rigRGZry" />
+    <!-- password1 -->   
+        
+    <Users 
+        id="2" 
+        email="marek223@email.com" 
+        password="$2y$10$Svj/M1/1pMHdjFDa11YALOGu/oTAJvT8sv7e3dGEBEqCe7laEn0yu" />
+    <!-- pass0923 -->    
+</dataset>

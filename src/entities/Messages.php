@@ -46,7 +46,7 @@ class Messages {
         if ($this->id == -1) {
 
             $sql = "INSERT INTO Messages(user_id, text, order_id)
-          VALUES('{$this->user_id}', '{$this->text}', '{$this->order_id}');";
+          VALUES('{$this->user_id}', '{$this->message}', '{$this->order_id}');";
 
             $result = $connection->query($sql);
 
@@ -78,7 +78,7 @@ class Messages {
 
         if ($result == true && $result->num_rows != 0) {
             foreach ($result as $row) {
-                $message = new Message();
+                $message = new Messages(); //Chyba literówka była?
                 $message->id = $row['id'];
                 $message->user_id = $row['user_id'];
                 $message->message = $row['text'];
@@ -99,7 +99,7 @@ class Messages {
 
         if ($result == true && $result->num_rows != 0) {
             foreach ($result as $row) {
-                $message = new Message();
+                $message = new Messages(); // Poprawiłam Message na M-s bo tworzysz nowy obiekt klasy, tak? Chyba literówka
                 $message->id = $row['id'];
                 $message->message = $row['text'];
                 $message->order_id = $row['order_id'];
