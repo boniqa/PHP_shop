@@ -104,7 +104,7 @@ class User {
         return True;
     }
 
-    public function returnAllUsers(mysqli $connection) {
+    static public function returnAllUsers(mysqli $connection) {
         $sql = "SELECT * FROM Users ORDER BY id DESC";
 
         $return = [];
@@ -125,6 +125,49 @@ class User {
             }
         }
         return $return;
+    }
+
+    public function returnUserById(mysqli $connection, $id) {
+        $sql = "SELECT * FROM Users WHERE id=$id";
+
+        $result = $connection->query($sql);
+
+        if ($result == true && $result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+
+            $loadedUser = new User();
+            $loadedUser->id = $row['id'];
+            $loadedUser->name = $row['name'];
+            $loadedUser->surname = $row['surname'];
+            $loadedUser->mail = $row['mail'];
+            $loadedUser->password = $row['password'];
+            $loadedUser->address = $row['address'];
+            return $loadedUser;
+        }
+        return null;
+    }
+
+    static public function printAllUsers(mysqli $connection) {
+        $loadUsers = User::returnAllUsers($connection);
+
+        echo "<div class='container'><table class='table table-hover'>";
+        echo "<thead><tr><th class='col-md-1'>ID</th><th class='col-md-2'>Name</th>"
+        . "<th class='col-md-2'>Surname</th><th class='col-md-2'>Mail</th>"
+        . "<th class='col-md-4'>Address</th><th class='col-md-1'>Edit</th></tr></thead><tbody>";
+
+
+        foreach ($loadUsers as $user) {
+            echo "<tr>";
+            echo "<td>".$user->getId()."</td>";
+            echo "<td>".$user->getName()."</td>";
+            echo "<td>".$user->getSurname()."</td>";
+            echo "<td>".$user->getMail()."</td>";
+            echo "<td>".$user->getAddress()."</td>";
+            echo "<td><a href='adminEditUser.php?userId='" . $user->getId() . "><button type='submit' class='btn btn-primary'>Edit user</button></td>";
+            echo "</tr>";
+        }
+        
+        echo "</tbody></table></div>";
     }
 
 }
