@@ -59,4 +59,22 @@ class Admin {
         return False;
     }
     
+    public static function loadAdminByLogin(mysqli $connection, $login) {
+        
+        $sql = "SELECT * FROM Admin WHERE login=$login";
+        $result = $connection->query($sql);
+        
+        if ($result == true && $result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            
+            $loadedAdmin = new Admin();
+            $loadedAdmin->id = $row['id'];
+            $loadedAdmin->login = $row['login'];
+            $loadedAdmin->password = $row['password'];
+            return $loadedAdmin;
+        }
+        return null;
+                
+    }
+    
 }
